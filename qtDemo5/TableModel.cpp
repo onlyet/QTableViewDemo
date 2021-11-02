@@ -10,13 +10,18 @@ TableModel::TableModel(QAbstractTableModel *parent)
     for (int i = 0; i < 10; i++)
     {
         QStringList tempList;
-        QList<Qt::CheckState> state;
-        for (int j = 0; j < 3; j++) {
+        //QList<Qt::CheckState> state;
+        for (int j = 0; j < 5; j++) {
             tempList.append(QString("haha%1%2").arg(i).arg(j));
-            state.append(Qt::Unchecked);
+            //state.append(Qt::Unchecked);
         }
         m_stringList.append(tempList);
     }  
+
+    m_stringList[0][0] = "hello world";
+
+
+
 }
 
 
@@ -35,7 +40,7 @@ QVariant TableModel::data(const QModelIndex &index, int role /*= Qt::DisplayRole
     case Qt::FontRole:
         return QFont("consolas", 9, 9);
     case Qt::TextAlignmentRole:
-        if (index.column() == 0)
+        //if (index.column() == 0)
             return Qt::AlignCenter;
     case Qt::ForegroundRole:
         return QBrush(Qt::blue);
